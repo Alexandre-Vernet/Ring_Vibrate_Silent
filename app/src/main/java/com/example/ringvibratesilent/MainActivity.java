@@ -1,11 +1,10 @@
 package com.example.ringvibratesilent;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
