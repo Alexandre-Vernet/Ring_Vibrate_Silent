@@ -6,15 +6,25 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     Context context;
     Button btnRing, btnVibrate, btnSilent;
     AudioManager audioManager;
+
+    enum ringMode {
+        RING,
+        VIBRATE,
+        SILENT
+    }
+
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,22 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
             startActivity(intent);
         }
+
+        // Get the current state of the buttons
+        int ringState = audioManager.getRingerMode();
+        switch (ringState) {
+            case 2:
+                btnRing.setBackgroundColor(getResources().getColor(R.color.red));
+                break;
+            case 1:
+                btnVibrate.setBackgroundColor(getResources().getColor(R.color.red));
+                break;
+            case 0:
+                btnSilent.setBackgroundColor(getResources().getColor(R.color.red));
+                break;
+        }
+
+        Log.d(TAG, "onCreate: ringState: " + ringState);
 
 
         btnRing.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL));
