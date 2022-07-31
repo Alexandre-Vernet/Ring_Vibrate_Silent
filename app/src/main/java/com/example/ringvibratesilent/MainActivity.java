@@ -1,6 +1,10 @@
 package com.example.ringvibratesilent;
 
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -8,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    Context context;
     Button btnRing, btnVibrate, btnSilent;
     AudioManager audioManager;
 
@@ -17,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.context = getApplicationContext();
+
         // Reference to the buttons
         btnRing = findViewById(R.id.btnRing);
         btnVibrate = findViewById(R.id.btnVibrate);
@@ -24,16 +30,24 @@ public class MainActivity extends AppCompatActivity {
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
 
-        btnRing.setOnClickListener(v -> {
-            audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-        });
+        NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        btnVibrate.setOnClickListener(v -> {
-            audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && !notificationManager.isNotificationPolicyAccessGranted()) {
 
-        btnSilent.setOnClickListener(v -> {
-            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-        });
+            Intent intent = new Intent(
+                    android.provider.Settings
+                            .ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+
+            startActivity(intent);
+        }
+
+
+        btnRing.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL));
+
+        btnVibrate.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE));
+
+        btnSilent.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT));
     }
 }
