@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Button;
 
@@ -17,14 +18,6 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     Button btnRing, btnVibrate, btnSilent;
     AudioManager audioManager;
-
-    enum ringMode {
-        RING,
-        VIBRATE,
-        SILENT
-    }
-
-    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +42,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Get the current state of the buttons
+        this.getRingState();
+
+        btnRing.setOnClickListener(v -> {
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            this.doVibration(2);
+            this.getRingState();
+        });
+        btnVibrate.setOnClickListener(v -> {
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+            this.doVibration(1);
+            this.getRingState();
+        });
+        btnSilent.setOnClickListener(v -> {
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            this.doVibration(0);
+            this.getRingState();
+        });
+    }
+
+    public void getRingState() {
         int ringState = audioManager.getRingerMode();
+        Log.d(TAG, "onCreate: ringState: " + ringState);
+
+        this.resetButtons();
+
         switch (ringState) {
             case 2:
                 btnRing.setBackgroundColor(getResources().getColor(R.color.red));
@@ -61,12 +78,28 @@ public class MainActivity extends AppCompatActivity {
                 btnSilent.setBackgroundColor(getResources().getColor(R.color.red));
                 break;
         }
+    }
 
-        Log.d(TAG, "onCreate: ringState: " + ringState);
+    public void resetButtons() {
+        btnRing.setBackgroundColor(getResources().getColor(R.color.black));
+        btnVibrate.setBackgroundColor(getResources().getColor(R.color.black));
+        btnSilent.setBackgroundColor(getResources().getColor(R.color.black));
+    }
 
 
-        btnRing.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL));
-        btnVibrate.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE));
-        btnSilent.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT));
+    public void doVibration(int ringState) {
+        // Get instance of Vibrator from current Context
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        switch (ringState) {
+            case 2:
+                v.vibrate(100);
+                break;
+            case 1:
+                v.vibrate(200);
+                break;
+            case 0:
+                v.vibrate(300);
+                break;
+        }
     }
 }

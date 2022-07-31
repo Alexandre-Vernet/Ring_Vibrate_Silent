@@ -4,6 +4,7 @@
     package="com.example.ringvibratesilent">
 
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 
     <application
