@@ -29,25 +29,18 @@ public class MainActivity extends AppCompatActivity {
         btnSilent = findViewById(R.id.btnSilent);
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
+        // Get Do Not Disturb permission
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && !notificationManager.isNotificationPolicyAccessGranted()) {
-
-            Intent intent = new Intent(
-                    android.provider.Settings
-                            .ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-
+        // If permission is not granted, request it
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !notificationManager.isNotificationPolicyAccessGranted()) {
+            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
             startActivity(intent);
         }
 
 
         btnRing.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL));
-
         btnVibrate.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE));
-
         btnSilent.setOnClickListener(v -> audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT));
     }
 }
