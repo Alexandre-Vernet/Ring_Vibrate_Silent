@@ -2,7 +2,7 @@
     <shortcut
         android:shortcutId="ring"
         android:enabled="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ring"
         android:shortcutShortLabel="@string/ring"
         android:shortcutLongLabel="@string/ring"
         android:shortcutDisabledMessage="@string/ring">
@@ -18,7 +18,7 @@
     <shortcut
         android:shortcutId="vibrate"
         android:enabled="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/vibrate"
         android:shortcutShortLabel="@string/vibrate"
         android:shortcutLongLabel="@string/vibrate"
         android:shortcutDisabledMessage="@string/vibrate">
@@ -34,7 +34,7 @@
     <shortcut
         android:shortcutId="silent"
         android:enabled="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/silent"
         android:shortcutShortLabel="@string/silent"
         android:shortcutLongLabel="@string/silent"
         android:shortcutDisabledMessage="@string/silent">
