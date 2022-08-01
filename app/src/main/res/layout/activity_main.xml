@@ -9,26 +9,32 @@
 
     <Button
         android:id="@+id/btnRing"
+        style="?android:attr/buttonTint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:textSize="14sp"
-        android:text="Ring" />
+        android:text="@string/ring"
+        android:textColor="@color/colorOnPrimary"
+        android:textSize="14sp" />
 
 
     <Button
         android:id="@+id/btnVibrate"
+        style="?android:attr/buttonTint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:textSize="14sp"
-        android:text="Vibrate" />
+        android:text="@string/vibrate"
+        android:textColor="@color/colorOnPrimary"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btnSilent"
+        style="?android:attr/buttonTint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:textSize="14sp"
-        android:text="Silent" />
+        android:text="@string/silent"
+        android:textColor="@color/colorOnPrimary"
+        android:textSize="14sp" />
 </LinearLayout>

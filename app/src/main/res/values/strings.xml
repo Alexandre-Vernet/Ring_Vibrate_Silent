@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Ring Vibrate Silent</string>
+    <string name="ring">Ring</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="silent">Silent</string>
 </resources>
