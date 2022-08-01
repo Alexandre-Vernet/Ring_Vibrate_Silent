@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,9 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void getRingState() {
         int ringState = audioManager.getRingerMode();
-        Log.d(TAG, "onCreate: ringState: " + ringState);
 
-        this.resetButtons();
+        this.resetBackgroundColorButtons();
 
         switch (ringState) {
             case 2:
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void resetButtons() {
+    public void resetBackgroundColorButtons() {
         btnRing.setBackgroundColor(getResources().getColor(R.color.black));
         btnVibrate.setBackgroundColor(getResources().getColor(R.color.black));
         btnSilent.setBackgroundColor(getResources().getColor(R.color.black));
