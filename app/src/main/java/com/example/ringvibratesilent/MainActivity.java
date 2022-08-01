@@ -67,21 +67,21 @@ public class MainActivity extends AppCompatActivity {
 
         switch (ringState) {
             case 2:
-                btnRing.setBackgroundColor(getResources().getColor(R.color.red));
+                btnRing.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 1:
-                btnVibrate.setBackgroundColor(getResources().getColor(R.color.red));
+                btnVibrate.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 0:
-                btnSilent.setBackgroundColor(getResources().getColor(R.color.red));
+                btnSilent.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
         }
     }
 
     public void resetBackgroundColorButtons() {
-        btnRing.setBackgroundColor(getResources().getColor(R.color.black));
-        btnVibrate.setBackgroundColor(getResources().getColor(R.color.black));
-        btnSilent.setBackgroundColor(getResources().getColor(R.color.black));
+        btnRing.setBackgroundColor(getResources().getColor(R.color.colorOnSecondary));
+        btnVibrate.setBackgroundColor(getResources().getColor(R.color.colorOnSecondary));
+        btnSilent.setBackgroundColor(getResources().getColor(R.color.colorOnSecondary));
     }
 
 
