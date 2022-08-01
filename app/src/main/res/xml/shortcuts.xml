@@ -1,0 +1,36 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/icon">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.ringvibratesilent"
+            android:targetClass="com.example.ringvibratesilent.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/icon">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.ringvibratesilent"
+            android:targetClass="com.example.ringvibratesilent.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/icon">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.ringvibratesilent"
+            android:targetClass="com.example.ringvibratesilent.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+</shortcuts>

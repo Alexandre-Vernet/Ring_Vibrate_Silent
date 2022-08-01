@@ -1,0 +1,48 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="ring"
+        android:enabled="true"
+        android:icon="@drawable/icon"
+        android:shortcutShortLabel="@string/ring"
+        android:shortcutLongLabel="@string/ring"
+        android:shortcutDisabledMessage="@string/ring">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.ringvibratesilent"
+            android:targetClass="com.example.ringvibratesilent.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+
+    <shortcut
+        android:shortcutId="vibrate"
+        android:enabled="true"
+        android:icon="@drawable/icon"
+        android:shortcutShortLabel="@string/vibrate"
+        android:shortcutLongLabel="@string/vibrate"
+        android:shortcutDisabledMessage="@string/vibrate">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.ringvibratesilent"
+            android:targetClass="com.example.ringvibratesilent.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+
+    <shortcut
+        android:shortcutId="silent"
+        android:enabled="true"
+        android:icon="@drawable/icon"
+        android:shortcutShortLabel="@string/silent"
+        android:shortcutLongLabel="@string/silent"
+        android:shortcutDisabledMessage="@string/silent">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.ringvibratesilent"
+            android:targetClass="com.example.ringvibratesilent.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+</shortcuts>
